@@ -5,10 +5,10 @@ import { useState } from "react";
 import ProfileBlock from "./components/ProfileBlock";
 import ActivityBlock from "./components/ActivityBlock";
 
-const times = ["Daily", "Weekly", "Monthly"];
+const timeModes = ["Daily", "Weekly", "Monthly"];
 
 const App = () => {
-  const [time, setTime] = useState("Daily");
+  const [timeMode, setTimeMode] = useState("Daily");
   let key = 0;
 
   return (
@@ -18,28 +18,17 @@ const App = () => {
           imgSrc={imgJeremy}
           imgAlt="Jeremy"
           name="Jeremy Robson"
-          times={times}
+          timeModes={timeModes}
+          updateTimeMode={setTimeMode}
         />
         {data.map((activity) => {
-          let currentTime, prevTime;
-          if (time === "Daily") {
-            currentTime = activity.timeframes.daily.current;
-            prevTime = activity.timeframes.daily.previous;
-          } else if (time === "Weekly") {
-            currentTime = activity.timeframes.weekly.current;
-            prevTime = activity.timeframes.weekly.previous;
-          } else if (time === "Monthly") {
-            currentTime = activity.timeframes.monthly.current;
-            prevTime = activity.timeframes.monthly.previous;
-          }
           return (
             <ActivityBlock
               key={key++}
-              title={activity.title}
+              data={activity}
+              timeMode={timeMode}
               iconSrc={ellipsis}
               iconAlt="ellipsis"
-              currentTime={currentTime}
-              prevTime={prevTime}
             />
           );
         })}

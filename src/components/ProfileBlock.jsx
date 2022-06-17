@@ -1,4 +1,4 @@
-const ProfileBlock = ({ imgSrc, imgAlt, name, times }) => {
+const ProfileBlock = ({ imgSrc, imgAlt, name, timeModes, updateTimeMode }) => {
   let key = 0;
 
   return (
@@ -11,10 +11,14 @@ const ProfileBlock = ({ imgSrc, imgAlt, name, times }) => {
         </div>
       </div>
       <div className="profile__time-container">
-        {times.map((time) => {
+        {timeModes.map((timeMode) => {
           return (
-            <p key={key++} className="profile__time">
-              {time}
+            <p
+              key={key++}
+              className="profile__time"
+              onClick={() => updateTimeMode(timeMode)}
+            >
+              {timeMode}
             </p>
           );
         })}
