@@ -1,4 +1,5 @@
 import data from "./data";
+import "./css/style.css";
 import imgJeremy from "./assets/image-jeremy.png";
 import ellipsis from "./assets/icon-ellipsis.svg";
 import { useState } from "react";

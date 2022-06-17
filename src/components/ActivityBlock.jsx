@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const ActivityBlock = ({ timeMode, data, iconSrc, iconAlt }) => {
   function getTime(timePeriod, timeMode) {
     if (timePeriod === "current") {
