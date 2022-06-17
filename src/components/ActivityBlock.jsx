@@ -19,6 +19,12 @@ const ActivityBlock = ({ timeMode, data, iconSrc, iconAlt }) => {
     }
   }
 
+  function getPrevPeriodDisplay(timeMode) {
+    if (timeMode === "Daily") return "Yesterday - ";
+    else if (timeMode === "Weekly") return "Last Week - ";
+    else if (timeMode === "Monthly") return "Last Month - ";
+  }
+
   return (
     <div className="activity">
       <div className="activity__info">
@@ -27,8 +33,12 @@ const ActivityBlock = ({ timeMode, data, iconSrc, iconAlt }) => {
           <img src={iconSrc} alt={iconAlt} className="activity__ellipsis" />
         </div>
         <div className="activity__time-container">
-          <p className="heading__time">{getTime("current", timeMode)}</p>
-          <p className="heading__last-time">{getTime("previous", timeMode)}</p>
+          <p className="activity__current-time">
+            {getTime("current", timeMode)} hrs
+          </p>
+          <p className="activity__prev-time">
+            {getPrevPeriodDisplay(timeMode) + getTime("previous", timeMode)} hrs
+          </p>
         </div>
       </div>
     </div>

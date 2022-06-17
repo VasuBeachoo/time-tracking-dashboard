@@ -16,6 +16,7 @@ const App = () => {
     <div className="dashboard-container">
       <div className="dashboard">
         <ProfileBlock
+          timeMode={timeMode}
           imgSrc={imgJeremy}
           imgAlt="Jeremy"
           name="Jeremy Robson"

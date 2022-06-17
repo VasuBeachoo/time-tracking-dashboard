@@ -1,5 +1,18 @@
-const ProfileBlock = ({ imgSrc, imgAlt, name, timeModes, updateTimeMode }) => {
+const ProfileBlock = ({
+  timeMode,
+  imgSrc,
+  imgAlt,
+  name,
+  timeModes,
+  updateTimeMode,
+}) => {
   let key = 0;
+
+  function getTimeModeClass(timeModeText, timeMode) {
+    if (timeModeText === timeMode)
+      return "profile__time-mode profile__time-mode--selected";
+    else return "profile__time-mode profile__time-mode--unselected";
+  }
 
   return (
     <div className="profile">
@@ -11,14 +24,14 @@ const ProfileBlock = ({ imgSrc, imgAlt, name, timeModes, updateTimeMode }) => {
         </div>
       </div>
       <div className="profile__time-container">
-        {timeModes.map((timeMode) => {
+        {timeModes.map((timeModeText) => {
           return (
             <p
               key={key++}
-              className="profile__time"
-              onClick={() => updateTimeMode(timeMode)}
+              className={getTimeModeClass(timeModeText, timeMode)}
+              onClick={() => updateTimeMode(timeModeText)}
             >
-              {timeMode}
+              {timeModeText}
             </p>
           );
         })}
