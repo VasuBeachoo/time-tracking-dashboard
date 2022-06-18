@@ -26,7 +26,10 @@ const ActivityBlock = ({ timeMode, data, iconSrc, iconAlt }) => {
   }
 
   return (
-    <div className="activity">
+    <div
+      id={`activity-${data.title.toLowerCase().replace(/\s/g, "")}`}
+      className="activity"
+    >
       <div className="activity__info">
         <div className="activity__header-container">
           <p className="activity__heading">{data.title}</p>

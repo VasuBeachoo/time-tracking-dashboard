@@ -25,6 +25,7 @@ $font: "Rubik", sans-serif;
 
 $border-radius: 10px;
 $padding: 25px;
+$background-icon-size: 60px;
 
 ///////////////////////////////////////
 // MIXINS /////////////////////////////
@@ -61,6 +62,7 @@ body {
   grid-template: repeat(2, 1fr) / repeat(4, 1fr);
   gap: 25px 30px;
   font-family: $font;
+  user-select: none;
 }
 
 .profile {
@@ -77,7 +79,7 @@ body {
     background-color: color(Blue);
     border-radius: $border-radius;
     width: 100%;
-    height: 270px;
+    height: 280px;
     padding: $padding;
   }
 
@@ -107,8 +109,8 @@ body {
   }
 
   &__time-container {
-    @include flex(column, space-between, flex-start);
-    height: 84px;
+    @include flex(column, space-around, flex-start);
+    height: 100px;
     padding: $padding;
   }
 
@@ -116,7 +118,6 @@ body {
     font-size: 17px;
     font-weight: 400;
     margin: 0;
-    user-select: none;
     transition: 0.2s;
 
     &:hover {
@@ -139,7 +140,9 @@ body {
 }
 
 .activity {
-  border-radius: $border-radius;
+  @include flex(column, flex-end, flex-start);
+  border-radius: $border-radius $border-radius $border-radius + 10px
+    $border-radius + 10px;
   box-sizing: border-box;
 
   &__info {
@@ -147,18 +150,36 @@ body {
     box-sizing: border-box;
     background-color: color(Dark-blue);
     border-radius: $border-radius;
-    height: 100%;
+    width: 100%;
+    height: 80%;
     padding: $padding;
+    transition: 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(1.7);
+    }
   }
 
   &__header-container {
     @include flex(row, space-between, center);
     width: 100%;
+    margin: 0 0 20px 0;
   }
 
   &__heading {
     color: color(White);
+    font-size: 16px;
+    font-weight: 500;
     margin: 0;
+  }
+
+  &__ellipsis {
+    width: 22px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__time-container {
@@ -167,11 +188,50 @@ body {
 
   &__current-time {
     color: color(White);
-    margin: 0;
+    font-size: 40px;
+    font-weight: 300;
+    margin: 0 0 10px 0;
   }
 
   &__prev-time {
     color: color(Pale-blue);
+    font-size: 12.5px;
     margin: 0;
   }
+}
+
+#activity-work {
+  background: url("../assets/icon-work.svg") color(Light-red-work) no-repeat top
+    right;
+  background-size: $background-icon-size;
+}
+
+#activity-play {
+  background: url("../assets/icon-play.svg") color(Soft-blue-play) no-repeat top
+    right;
+  background-size: $background-icon-size;
+}
+
+#activity-study {
+  background: url("../assets/icon-study.svg") color(Light-red-study) no-repeat
+    top right;
+  background-size: $background-icon-size;
+}
+
+#activity-exercise {
+  background: url("../assets/icon-exercise.svg") color(Lime-green-exercise)
+    no-repeat top right;
+  background-size: $background-icon-size;
+}
+
+#activity-social {
+  background: url("../assets/icon-social.svg") color(Violet-social) no-repeat
+    top right;
+  background-size: $background-icon-size;
+}
+
+#activity-selfcare {
+  background: url("../assets/icon-self-care.svg") color(Soft-orange-self-care)
+    no-repeat top right;
+  background-size: $background-icon-size;
 }
